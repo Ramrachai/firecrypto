@@ -7,16 +7,21 @@ import CoinPage from "./Routes/CoinPage";
 import Background from "./Components/Background";
 
 function App() {
-  const router = createBrowserRouter([
+  const router = createBrowserRouter(
+    [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/CoinPage/:id",
+        element: <CoinPage />,
+      },
+    ],
     {
-      path: "/",
-      element: <Home />,
-    },
-    {
-      path: "/CoinPage/:id",
-      element: <CoinPage />,
-    },
-  ]);
+      basename: "/firecrypto",
+    }
+  );
 
   return (
     <div className="App">
