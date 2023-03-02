@@ -3,7 +3,6 @@ import Axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import "../Routes/Styles/CoinPage.css";
-import BackgroundImg from "../Images/cryptobckg.jpeg";
 
 function CoinPage() {
   let { id } = useParams();
@@ -23,14 +22,7 @@ function CoinPage() {
   // if statement to check if data has reached, only then render the component
   if (coin) {
     return (
-      <div
-        className="coinPage-Container"
-        style={{
-          backgroundImage: `url(${BackgroundImg})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-        }}
-      >
+      <div className="coinPage-Container">
         <div className="coinPage-Info">
           <h1>{coin.name}</h1>
           <img src={coin.image.large} alt="Icon" className="coinPage-Icon" />
@@ -70,8 +62,8 @@ function CoinPage() {
               </h3>
             </div>
           </div>
-          <Link to="/">
-            <div className="coinPage-RouteButton">Go back</div>
+          <Link to="/" className="coinPage-RouteButton">
+            Go back
           </Link>
 
           {/* coinName={coins.name}

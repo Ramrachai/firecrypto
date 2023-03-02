@@ -10,7 +10,7 @@ function Home() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    refreshPage();
+    fetchData();
   }, []);
 
   const filterCoins = coins.filter((coin) =>
@@ -21,40 +21,31 @@ function Home() {
     setSearchTerm(e.target.value);
   };
 
-  const refreshPage = () => {
+  const fetchData = () => {
     setIsLoading(true);
     Axios.get(
       "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
     ).then((response) => {
-      console.log(response.data);
       setIsLoading(false);
       setCoins(response.data);
     });
   };
 
-  // const getCoins = () => {
-  //   Axios.get(
-  //     "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
-  //   ).then((response) => {
-  //     console.log(response);
-  //     setCoins(response.data);
-  //   });
-  // };
-
-  // <Route exact path="/coin/:id"
-
-  // history.push("/coin/${id}")
   return (
     <div className="App">
       <div className="headerContainer">
-        <h1>Welcome to the CryptoChecker</h1>
+        <h1>Fire Crypto</h1>
+        <h4>
+          Welcome to fire crypto app. Here you can check the real-time crypto
+          currency price
+        </h4>
         <div className="buttonContainer">
           <input
             placeholder="Search for a Coin"
             type="text"
             onChange={handleSearch}
           />
-          <img onClick={refreshPage} src={Refresh}></img>
+          <img alt="" onClick={fetchData} src={Refresh}></img>
         </div>
       </div>
       <div className="coinContainer">
